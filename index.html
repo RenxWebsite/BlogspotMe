@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renx Code</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        video#background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        header video {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+        header h1 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        header p {
+            font-size: 16px;
+            color: #ccc;
+            text-align: center;
+        }
+        .musik-container {
+            display: flex;
+            align-items: center;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .musik-container img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            animation: spin 10s linear infinite;
+            margin-right: 15px;
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .musik-info {
+            flex: 1;
+        }
+        .musik-info h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar div {
+            height: 100%;
+            background: #007BFF;
+            width: 0%;
+            transition: width 0.2s ease;
+        }
+        .musik-controls {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .musik-controls button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .musik-controls button:hover {
+            background: #333;
+        }
+        .musik-controls span {
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        .video-list-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+        }
+        .video-list-container img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+        .video-list-container button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            border-radius: 10px;
+            margin-top: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+        .video-list-container button:hover {
+            background: #333;
+        }
+        .produk-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 1200px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .produk-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            margin: 10px;
+            width: 250px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .produk-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .produk-item h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .produk-item button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .produk-item button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video id="background-video" autoplay loop muted>
+        <source src="background-video.mp4" type="video/mp4">
+        Browser Anda tidak mendukung video latar belakang.
+    </video>
+
+    <!-- Header -->
+    <header>
+        <video autoplay muted loop>
+            <source src="header-profile.mp4" type="video/mp4">
+            Browser Anda tidak mendukung video autoplay.
+        </video>
+        <h1>Renx Code</h1>
+        <p>"Kata Maaf Memanglah Membuat Tenang, Lantas Jika Sudah Berkeping-Keping Apakah Kata Itu Masih Berlaku?"</p>
+    </header>
+
+    <!-- Pemutar Musik -->
+    <div class="musik-container">
+        <img src="PpMp3.jpeg" alt="Foto Musik">
+        <div class="musik-info">
+            <h3 id="music-title">Musik Latar</h3>
+            <div class="progress-bar">
+                <div id="progress"></div>
+            </div>
+            <div class="musik-controls">
+                <span id="current-time">0:00</span>
+                <button id="play-pause">Play</button>
+                <button id="next-music">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tombol untuk ke Daftar Video -->
+    <div class="video-list-container">
+        <img src="XLV.jpeg" alt="Thumbnail Video">
+        <button onclick="window.location.href='ListVid.html'">Watch List</button>
+    </div>
+
+    <!-- List Produk -->
+    <div class="produk-container">
+        <div class="produk-item">
+            <img src="produk1.jpeg" alt="Produk 1">
+            <h3>My YouTube</h3>
+            <button onclick="window.location.href='https://youtube.com/@ruzurenxmos'">Kunjungi</button>
+        </div>
+        <div class="produk-item">
+            <img src="produk2.jpeg" alt="Produk 2">
+            <h3>My Tiktok</h3>
+            <button onclick="window.location.href='https://tiktok.com/@glngaadttya'">Kunjungi</button>
+        </div>
+        <div class="produk-item">
+            <img src="produk3.jpeg" alt="Produk 3">
+            <h3>My WhatsApp</h3>
+            <button onclick="window.location.href='https://wa.me/6289518928221?text=Halo Bang Renx..'">Kunjungi</button>
+        </div>
+        <div class="produk-item">
+            <img src="produk4.jpeg" alt="Produk 4">
+            <h3>My Telegram</h3>
+            <button onclick="window.location.href='https://t.me/ruzurenx'">Kunjungi</button>
+        </div>
+    </div>
+
+    <audio id="background-music" loop>
+        <source id="music-source" src="For Revenge - Serana.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung musik latar.
+    </audio>
+
+    <script>
+        const musicList = [
+            "For Revenge - Serana.mp3",
+            "Mighfar Suganda - Anti ∞ Hero.mp3"
+        ];
+        const playPauseButton = document.getElementById('play-pause');
+        const nextButton = document.getElementById('next-music');
+        const music = document.getElementById('background-music');
+        const musicSource = document.getElementById('music-source');
+        const musicTitle = document.getElementById('music-title');
+        const progress = document.getElementById('progress');
+        const currentTime = document.getElementById('current-time');
+
+        let currentMusicIndex = 0;
+
+        function getMusicTitle(fileName) {
+            return fileName.replace('.mp3', '');
+        }
+
+        function updateProgress() {
+            const percent = (music.currentTime / music.duration) * 100;
+            progress.style.width = percent + '%';
+            currentTime.textContent = formatTime(music.currentTime);
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}:${secs < 10 ? '0' + secs : secs}`;
+        }
+
+        function playMusic(index) {
+            currentMusicIndex = index;
+            const selectedMusic = musicList[index];
+            musicSource.src = selectedMusic;
+            musicTitle.textContent = getMusicTitle(selectedMusic);
+            music.load();
+            music.play();
+        }
+
+        playPauseButton.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                playPauseButton.textContent = 'Pause';
+            } else {
+                music.pause();
+                playPauseButton.textContent = 'Play';
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            const nextIndex = (currentMusicIndex + 1) % musicList.length;
+            playMusic(nextIndex);
+        });
+
+        music.addEventListener('timeupdate', updateProgress);
+
+        // Memulai musik pertama kali saat halaman dimuat
+        window.onload = () => playMusic(0);
+    </script>
+</body>
+</html>
+
